@@ -1,0 +1,36 @@
+<head>
+  <style>
+    .cadastro{
+      width: 500px;
+      float: left;
+      margin: 10%;margin-left:0;
+      border-width: 1px; border-color: #0d0c35; border-style: solid;border-left: 0;
+      background-color: #0d0c35;
+    }
+    .btn{
+      margin:3px;
+      margin-left: 6%;
+    }
+  </style>
+</head>
+
+<div class="cadastro" style="flex-conteiner">
+  <form action="/ad/regsala/cons" method="POST">
+    <div class="col mt-4">
+      <div class="col mt-1">
+        <select class="form-control" placeholder="Número da sala" , name="numero">
+          <option value="null"></option>
+          <option value="45"> Sala 45</option>
+          <option value="55"> sala 55</option>
+        </select>
+      </div>
+      <div class="col mt-1">
+        <input type="text" class="form-control" placeholder="Consumo aproximado" , name="consAprox" autocomplete=null>
+      </div>
+      <div class="col mt-1">
+        <input type="text" , class="form-control" placeholder="Vezes por semana que foi aberta" , name="contSem">
+      </div>
+    </div>
+    <button type="submit" class="btn">Registrar</button>
+  </form>
+</div>

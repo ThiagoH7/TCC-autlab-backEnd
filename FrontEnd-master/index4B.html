@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style4.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid</title>
+</head>
+
+<body>
+    <div class="grid areas">
+        <div class="nav">
+            <h2>TCC</h2>
+            <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a class="button" href="#">Salas</a></li>
+                <li><a href="#">Sair</a></li>
+            </ul>
+        </div>
+        <div class="content">
+
+        </div>
+
+        <div id="modalID" class="pop-up">
+            <div class="salas">
+                <!--<button id="fechar">X</button>-->
+                <div class="bloco">
+                    <ul>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                    </ul>
+                </div>
+                <div class="bloco">
+                    <ul>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                    </ul>
+                </div>
+                <div class="bloco">
+                    <ul>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                    </ul>
+                </div>
+                <div class="bloco">
+                    <ul>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                    </ul>
+                </div>
+                <div class="bloco">
+                    <ul>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                    </ul>
+                </div>
+                <div class="bloco">
+                    <ul>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                    </ul>
+                </div>
+                <div class="bloco">
+                    <ul>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                        <li class="sala"><a href="#">Lab.Info</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <script>
+        function iniciar(modalID) {
+            const modal = document.getElementById(modalID);
+            modal.classList.add('mostrar')
+            modal.addEventListener('click', () => {
+                console.log(event)
+                if (event.target.id == modalID) {
+                    modal.classList.remove('mostrar')
+                }
+            });
+        }
+
+        document.querySelector('.button').addEventListener('click', () => iniciar('modalID'));
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

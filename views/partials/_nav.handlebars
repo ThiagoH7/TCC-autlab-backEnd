@@ -1,0 +1,41 @@
+<head>
+    <link rel="stylesheet" href="/css/style4.css">
+</head>
+        <div class="nav">
+            <h2>TCC</h2>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a class="button" href="#">Salas</a></li>
+                <li><a href="/ad/usuario/novo">Cadastro</a></li>
+                <li><a href="/logout">Sair</a></li>
+            </ul>
+        </div>
+        <div id="modalID" class="pop-up">
+            <div class="salas">
+                <!--<button id="fechar">X</button>-->
+                <div class="bloco">
+                    <ul>
+                        <h3>Laboratórios de informática</h3>
+                        <li class="sala"><a href="/ad/reqsala40">Lab.Info I</a></li>
+                        <li class="sala"><a href="/ad/reqsala45">Lab.Info II</a></li>
+                        <li class="sala"><a href="#">Lab.Info III</a></li>
+                        <li class="sala"><a href="#">Lab.Info IV</a></li>
+                        <li class="sala"><a href="#">Lab.Redes</a></li>
+                        <li class="sala"><a href="#">Lab.Manutenção</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <script>
+        function iniciar(modalID) {
+            const modal = document.getElementById(modalID);
+            modal.classList.add('mostrar')
+            modal.addEventListener('click', () => {
+                console.log(event)
+                if (event.target.id == modalID) {
+                    modal.classList.remove('mostrar')
+                }
+            });
+        }
+        document.querySelector('.button').addEventListener('click', () => iniciar('modalID'));
+    </script>

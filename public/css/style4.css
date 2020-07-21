@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+.grid {
+    height: 100%;
+    display: grid;
+}
+
+.areas {
+    grid: "nav nav" 130px "content content " 1fr /260px 1fr;
+}
+
+.sala {
+    font-size: 1em;
+    color: white;
+    text-decoration: none;
+    margin: 5px;
+    background-color: rgb(255, 255, 255);
+}
+
+
+/* Nav */
+
+.nav {
+    grid-area: nav;
+    background: linear-gradient(135deg, #1a125f, #3c319e);
+    display: grid;
+    padding: 0 5%;
+    grid-template-columns: 1fr auto;
+    height: 100px;
+    align-items: center;
+    color: white;
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav.salas {
+    display: none;
+}
+
+.nav ul li a {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+    color: white;
+    transition: .4s;
+    display: block;
+    transition: 0.3s;
+}
+
+.nav ul li a:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+/* Content */
+
+.content {
+    grid-area: content;
+}
+
+
+/* Modal */
+
+.pop-up {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.pop-up.mostrar {
+    display: flex;
+    z-index: 2000;
+}
+
+.salas {
+    position: relative;
+    background-color: white;
+    border: 1px solid black;
+    width: 70%;
+    height: 70%;
+    border-radius: 10px;
+    animation: modal .5s;
+    grid-template-rows: 50px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+
+/*
+#fechar{
+    background-color: rgb(15, 52, 163);
+    width: 40px;
+    height: 40px;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: -20px;
+    right: -15px;
+    outline: none;
+    border: 1px solid black;
+    cursor: pointer;
+}
+*/
+
+.salas ul {
+    margin: 10px;
+    list-style: none;
+}
+
+.salas ul li {
+    margin: 40px 10px;
+}
+
+.salas ul li a {
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    background-color: rgb(88, 88, 88);
+}
+
+@keyframes modal {
+    from {
+        transform: scale(.1);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .salas {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        margin: 5px;
+        list-style: none;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .salas {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 5px;
+        list-style: none;
+    }
+}
