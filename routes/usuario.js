@@ -37,9 +37,7 @@ router.post('/novo', (req, res) => {
     if (req.body.password != req.body.confirmPassword) {
         erros.push({ texto: "As senhas não batem" })
     }
-    erros.forEach(element => {
-        console.log(element)
-    });
+
     //Caso erros=0, cadastra o usuário
     if (erros.length > 0) {
         res.render('pages/usuario', {
