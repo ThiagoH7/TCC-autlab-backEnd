@@ -27,6 +27,36 @@ html {
     background-color: rgb(255, 255, 255);
 }
 
+.cardChart {
+    box-shadow: 5px 5px 5px grey;
+    border-radius: 20px;
+    margin: 4px;
+    width: 50%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.selection {
+    background-color: #73c6cc98;
+    padding: 6px;
+    margin: 4px auto;
+    width: 83%;
+    box-shadow: 5px 5px 5px grey;
+    border-radius: 15px;
+    text-align: center;
+    font-size: x-large;
+}
+
+
+/* .cadastro-user {
+    width: 80%;
+    margin: 4px auto;
+    border: outset;
+} */
+
 
 /* Nav */
 

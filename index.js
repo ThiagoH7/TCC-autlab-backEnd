@@ -4,7 +4,8 @@ const app = express()
 const handlebars = require('express-handlebars')
 const bp = require('body-parser')
 const mongoose = require('mongoose')
-const admin = require('./routes/admin.js')
+const admin = require('./routes/admin')
+const usuario = require('./routes/usuario')
 const path = require('path')
 const session = require('express-session')
 const flash = require('connect-flash')
@@ -23,8 +24,9 @@ app.set("view engine", "handleBars")
 var hbs = handlebars.create({
     helpers: {
         isAdmin: (value) => {
-            user.admin = value
-            return value
+            if (req.isAuthenticated()) {
+                if (req.user.admin == true) { return value = true }
+            } else { return value = false }
         }
     }
 })
@@ -86,9 +88,10 @@ app.get('/logout', loginReq, (req, res) => {
 
 //rotaAdmin-----------//
 app.use('/ad', admin)
+app.use('/user', usuario)
 
 //Rodando-------------//
-const PORTA = 80
+const PORTA = 8089
 app.listen(PORTA, () => {
     console.log("<-------------------------------------------------------------->"), console.log("Servidor rodando na porta: " + PORTA), console.log("<-------------------------------------------------------------->")
 })

@@ -1,5 +1,8 @@
 {{!-- Recebendo os dados do Mongodb --}}
     {{#if salas}}
+    <div id="chart-conteiner" class="cardChart">
+    <canvas id="myChart" class="card-body"></canvas>
+    </div>
         <script>
             dados = []
             diaSem = []
@@ -30,7 +33,7 @@
                 }]
             },
             options:{
-                responsive: false
+                responsive: true
             }
         })
     </script>
