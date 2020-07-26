@@ -2,9 +2,14 @@ const ex = require('express')
 const router = ex.Router()
 const mongoose = require('mongoose')
 require('../models/User')
-const User = mongoose.model('users')
+    /* const User = mongoose.model('users') */
+const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
+const mailer = require('../modules/nodemailer')
+const crypto = require('crypto')
+const path = require('path')
+const { pathToFileURL } = require('url')
 
 //Cadastrar novo usuário
 router.get('/novo', (req, res) => {
@@ -57,32 +62,87 @@ router.post('/novo', (req, res) => {
                 res.redirect('/user/novo')
             } else {
                 const newUser = new User({
-                        name: req.body.name,
-                        email: req.body.email,
-                        password: req.body.password,
-                        admin: req.body.admin
-                    })
-                    //hasheando a senha
-                bcrypt.genSalt(10, (err, salt) => {
-                    bcrypt.hash(newUser.password, salt, (err, hash) => {
-                        if (err) {
-                            req.flash('error_msg', "Houve um ero ao salvar usuário")
-                            res.redirect('/user/novo')
-                        }
-                        newUser.password = hash
-                        newUser.save().then(() => {
-                            req.flash('success_msg', "Usuário criado com sucesso ")
-                            console.log('Sucesso beibe')
-                            res.redirect('/')
-                        }).catch((err) => {
-                            req.flash('error_msg', "Houve um erro ao cadastrar usuário no sistema")
-                            console.error(err)
-                            res.redirect('/user/novo')
-                        })
-                    })
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: req.body.password,
+                    admin: req.body.admin
+                })
+                newUser.save().then(() => {
+                    req.flash('success_msg', "Usuário cadastrado com sucesso")
+                    res.redirect('/')
+                }).catch((err) => {
+                    console.log(err)
+                    req.flash('error_msg', "Houve um erro ao cadastrar, tente novamente")
+                    res.redirect('/user/novo')
                 })
             }
         })
+    }
+})
+
+router.get('/recuperar_senha', (req, res) => {
+    res.render('pages/recupSenha')
+})
+
+router.post('/recuperar_senha', async(req, res) => {
+    const { email } = req.body
+
+    try {
+        const user = await User.findOne({ email })
+
+        if (!user) {
+            return res.status(400).send({ error: "User not found" })
+        }
+        const token = crypto.randomBytes(20).toString('hex')
+        const now = new Date()
+        now.setHours(now.getHours() + 1)
+        await User.findByIdAndUpdate(user.id, {
+            '$set': {
+                tokenReset: token,
+                tokenResetExpires: now
+            }
+        })
+        console.log(token)
+        mailer.sendMail({
+            to: email,
+            from: 'thiagop070@gmail.com',
+            template: 'esqueceuSenha',
+            context: { token },
+        }, (err) => {
+            if (err) {
+                return res.status(400).send({ error: 'Erro ao enviar email, tente novamente' })
+            }
+            return res.send()
+        })
+
+    } catch (err) {
+        res.status(400).send({ error: "Erro ao tentar recuperar a senha, tente novamente" })
+    }
+})
+
+router.post('/nova_senha', async(req, res) => {
+    const { email, token, password } = req.body
+
+    try {
+        const user = await User.findOne({ email })
+
+        if (!user)
+            return res.status(400).send({ error: "Usuário não existe, confira suas credenciais" })
+
+        if (token !== user.tokenReset)
+            return res.status(400).send({ error: "Token inválido" })
+
+        let now = new Date()
+        now = Date.now()
+        if (now > user.tokenResetExpires)
+            return res.status(400).send({ error: "Token expirado" })
+
+        user.password = password
+        await user.save()
+        res.send()
+    } catch (err) {
+        console.log(err)
+        return res.status(400).send({ error: "Não foi possivel mudar sua senha, tente novamente" })
     }
 })
 

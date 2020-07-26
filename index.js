@@ -57,7 +57,7 @@ app.use(flash())
 
 //Mongoose---------//
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost/salaControl", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb://localhost/salaControl", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
     .catch((erro) => { console.log(erro) })
 
 //Model das salas------//
@@ -86,7 +86,7 @@ app.get('/logout', loginReq, (req, res) => {
     res.redirect('/')
 })
 
-//rotaAdmin-----------//
+//Rotas Externas-----------//
 app.use('/ad', admin)
 app.use('/user', usuario)
 
