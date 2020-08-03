@@ -57,7 +57,7 @@ app.use(flash())
 
 //Mongoose---------//
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost/salaControl", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+mongoose.connect("mongodb+srv://Thiago:thiago19@salacontrol-teste.7x2lx.mongodb.net/SalaControl-teste?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
     .catch((erro) => { console.log(erro) })
 
 //Model das salas------//

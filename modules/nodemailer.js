@@ -3,11 +3,10 @@ const nodemailer = require('nodemailer')
 const hbs = require('nodemailer-express-handlebars')
 
 const transport = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
+    service: 'Gmail',
     auth: {
-        user: "2f36ddbb3c8b80",
-        pass: "338f4edd548bd0"
+        user: "thiagop070@gmail.com",
+        pass: "thiago19072001"
     }
 })
 

@@ -2,7 +2,6 @@ const ex = require('express')
 const router = ex.Router()
 const mongoose = require('mongoose')
 require('../models/User')
-    /* const User = mongoose.model('users') */
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
@@ -102,14 +101,15 @@ router.post('/recuperar_senha', async(req, res) => {
                 tokenResetExpires: now
             }
         })
-        console.log(token)
         mailer.sendMail({
             to: email,
             from: 'thiagop070@gmail.com',
             template: 'esqueceuSenha',
             context: { token },
+            subject: "No reply"
         }, (err) => {
             if (err) {
+                console.log(err)
                 return res.status(400).send({ error: 'Erro ao enviar email, tente novamente' })
             }
             return res.send()
@@ -120,6 +120,9 @@ router.post('/recuperar_senha', async(req, res) => {
     }
 })
 
+router.get('/nova_senha', (req, res) => {
+    res.send("rota não definida")
+})
 router.post('/nova_senha', async(req, res) => {
     const { email, token, password } = req.body
 
