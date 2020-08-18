@@ -1,4 +1,18 @@
-{{!-- Recebendo os dados do Mongodb --}}
+<div class="content">
+    <section class="left">
+        <div class="status">
+            <ul>
+                <li>Nome: </li>
+                <li>Responsavel: </li>
+                <li>Situação: </li>
+            </ul>
+            <input type="button" id="reserva" value="Reservar">
+        </div>
+       </section>
+        <section class="right">
+        <div class="grafico">
+                <div>
+                    {{!-- Recebendo os dados do Mongodb --}}
     {{#if salas}}
     <div id="chart-conteiner" class="cardChart">
     <canvas id="myChart" class="card-body"></canvas>
@@ -37,3 +51,7 @@
             }
         })
     </script>
+    </div>
+    </div>
+</section>
+</div>
