@@ -10,28 +10,28 @@
                 <li><a href="/logout">Sair</a></li>
             </ul>
         </div>
-        <div id="modalID" class="pop-up">
+    <div id="modalID" class="pop-up">
             <div class="salas">
                 <!--<button id="fechar">X</button>-->
-                <div class="bloco">
-                    <ul>
-                        <h3>Laboratórios de informática</h3>
-                        <li class="sala"><a href="/ad/reqsala40">Lab.Info I</a></li>
-                        <li class="sala"><a href="/ad/reqsala45">Lab.Info II</a></li>
-                        <li class="sala"><a href="#">Lab.Info III</a></li>
-                        <li class="sala"><a href="#">Lab.Info IV</a></li>
-                        <li class="sala"><a href="#">Lab.Redes</a></li>
-                        <li class="sala"><a href="#">Lab.Manutenção</a></li>
-                    </ul>
-                </div>
+                <ul id="list" class="container">
+                    <div>
+                        <li class="item"><a href="/ad/reqsala40">Lab info</a></li>
+                        <li class="item"><a href="/ad/reqsala45">Lab info</a></li>
+                        <li class="item inline-b-item"><a href="#">Lab Bio</a></li>
+                        <li class="item inline-b-item"><a href="#">Lab Redes</a></li>
+                        <li class="item inline-b-item"><a href="#">Sala 44</a></li>
+                        <li class="item inline-b-item"><a href="#">Sala 57</a></li>
+                        <li class="item inline-b-item"><a href="#">Lab Quim</a></li>
+                    </div>
+                </ul>
             </div>
         </div>
+    </div>
     <script>
         function iniciar(modalID) {
             const modal = document.getElementById(modalID);
             modal.classList.add('mostrar')
             modal.addEventListener('click', () => {
-                console.log(event)
                 if (event.target.id == modalID) {
                     modal.classList.remove('mostrar')
                 }
