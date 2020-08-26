@@ -1,0 +1,270 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body, html{
+    height: 100%;
+}
+
+.clear{
+    clear: both;
+}
+
+.grid{
+    height: 100%;
+    display: grid;
+}
+
+.areas{
+    grid: 
+        "nav nav" 130px
+        "content content " 1fr
+        /260px 1fr
+    ;
+}
+
+/* Nav */
+
+.nav{
+    grid-area: nav;
+    background: linear-gradient(135deg, #2d2486, #594dc4);
+    display: grid;
+    padding: 0 5%;
+    grid-template-columns: 1fr auto;
+    height: 100px;
+    align-items: center;
+    color: white;
+}
+
+.nav ul{
+    display: flex;
+    list-style: none;
+}
+
+.nav ul li a{
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: .4s;
+    font-weight: 500;
+    display: block;
+    transition: 0.3s;
+}
+
+.nav ul li a:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+
+}
+
+
+/* Content */
+
+.content{
+    grid-area:content;
+}
+
+.left{
+    height:100%;
+    width: 30%;
+    float: left;
+    padding: 10px 30px;
+}
+
+.status{
+    width: 100%;
+    height: 95%;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #2d2486, #594dc4);
+    color: white;
+    padding: 20px 0;
+}
+
+.status ul{
+    list-style: none;
+}
+
+.status ul li{
+    font-size: 20px;
+    border-bottom:2px solid #7972bb;
+    margin: 0 30px;
+    padding: 20px 0;
+}
+
+#reserva{
+    width: 40%;
+    height: 35px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin: 25% 30%;
+    transition: 0.4s;
+    background-color: white;
+}
+
+#reserva:hover{
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+}
+
+
+.right{
+    float: right;
+    width: 70%;
+}
+
+.grafico{
+    width: 500px;
+    height: 400px;
+    margin: 5% auto;
+    background-color: rgb(165, 165, 165);
+
+}
+
+@media screen and (max-width:1100px){
+    .left{
+        float: none;
+        width: 100%;
+        height: auto;
+    }
+
+    .status{
+        width: 50%;
+        margin: 0 auto;
+
+    }
+
+    .right{
+        float: none;
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+@media screen and (max-width:420px){
+    .left{
+        float: none;
+        width: 100%;
+        height: auto;
+    }
+
+    .status{
+        width: 100%;
+        margin: 0 auto;
+
+    }
+
+    .right{
+        float: none;
+        width: 100%;
+        height: auto;
+    }
+
+    .grafico{
+        width: 98%;
+    }
+
+}
+
+
+/* Modal */
+
+.pop-up{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.pop-up.mostrar{
+    display: flex;
+    z-index: 2000;
+}
+
+
+.salas{
+    position: relative;
+    background-color: white;
+    border: 1px solid black;
+    width: 70%;
+    height: 70%;
+    border-radius: 10px;
+    animation: modal .5s;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    padding-left: 50px;
+}
+
+
+
+/*
+#fechar{
+    background-color: rgb(15, 52, 163);
+    width: 40px;
+    height: 40px;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: -20px;
+    right: -15px;
+    outline: none;
+    border: 1px solid black;
+    cursor: pointer;
+}
+*/
+
+.container {
+    list-style:none;
+    margin: 0;
+    padding: 20px;
+}
+
+.item{
+    margin:30px 0px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    justify-content: space-between;
+    background-color: #1a125f;
+}
+
+.item a{
+    padding: 10px 15px;
+    background-color: #1a125f;
+    text-decoration: none;
+    color: white;
+}
+/*
+#pesquisa{
+    position: relative;
+    top: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 90%;
+    height: 40px;
+    margin: 0 auto;
+    padding: 6px;
+}
+*/
+@keyframes modal{
+    from{
+        transform: scale(.1);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
+

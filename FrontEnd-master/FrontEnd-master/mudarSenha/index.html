@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mudar.css">
+    <title>mudar</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content first-content">
+            <div class="second-column">
+                <h2 class="title title-second">Alterar Senha</h2>
+                <form class="form">
+                    <label class="label-input" for="">
+                        <input type="text" placeholder="Token">
+                    </label>
+                    <label class="label-input" for="">
+                        <input id="senha1" type="password" placeholder="Nova Senha" name="password">
+                        <span class="span" onclick="mostrarSenha1()"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                            class="bi bi-lock-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z" />
+                            <path fill-rule="evenodd"
+                                d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z" />
+                        </svg></span>
+                    </label>
+                    <label class="label-input" for="">
+                        <input id="senha2" type="password" placeholder="Confirmar Senha" name="password">
+                        <span class="span" onclick="mostrarSenha2()"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                            class="bi bi-lock-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z" />
+                            <path fill-rule="evenodd"
+                                d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z" />
+                        </svg></span>
+                    </label>
+
+                    <button type="submit" class="btn btn-second">Confirmar</button>
+                </form>
+            </div><!-- second column -->
+        </div><!-- first content -->
+    </div>
+
+    <script>
+        function mostrarSenha1() {
+            var senha = document.getElementById('senha1');
+            if (senha.type == "password") {
+                senha.type = "text";
+            } else {
+                senha.type = "password";
+            }
+        }
+
+        function mostrarSenha2() {
+            var senha = document.getElementById('senha2');
+            if (senha.type == "password") {
+                senha.type = "text";
+            } else {
+                senha.type = "password";
+            }
+        }
+    </script>
+</body>
+
+</html>
