@@ -1,5 +1,21 @@
-<form action="/user/recuperar_senha" method="post">
-    <input type="email" name="email">
-    <label for="email">Ensira seu email:</label>
-    <button type="submit">Enviar</button>
-</form>
+<head>
+    <link rel="stylesheet" href="/css/recuperar.css">
+    <title>Recuperação de senha</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content first-content" action="/user/recuperar_senha" method="post">
+            <div class="second-column">
+                <h2 class="title title-second">Recuperar Senha</h2>
+                <form class="form" method="POST" action="/user/recuperar_senha">
+                    <label class="label-input" for="">
+                        Insira seu Email:
+                    </label>
+                    <input type="email" placeholder="Email" name="email">
+                    <button type="submit" class="btn btn-second">Enviar</button>
+                </form>
+            </div><!-- second column -->
+        </div><!-- first content -->
+    </div>
+</body>
