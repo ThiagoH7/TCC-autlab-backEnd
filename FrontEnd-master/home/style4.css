@@ -246,7 +246,7 @@ body, html{
     text-decoration: none;
     color: white;
 }
-
+/*
 #pesquisa{
     position: relative;
     top: 10px;
@@ -256,10 +256,8 @@ body, html{
     height: 40px;
     margin: 0 auto;
     padding: 6px;
-
-
 }
-
+*/
 @keyframes modal{
     from{
         transform: scale(.1);

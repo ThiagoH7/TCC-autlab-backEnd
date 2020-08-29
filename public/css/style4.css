@@ -1,34 +1,32 @@
-*{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
-body, html{
+body,
+html {
     height: 100%;
 }
 
-.clear{
+.clear {
     clear: both;
 }
 
-.grid{
+.grid {
     height: 100%;
     display: grid;
 }
 
-.areas{
-    grid: 
-        "nav nav" 130px
-        "content content " 1fr
-        /260px 1fr
-    ;
+.areas {
+    grid: "nav nav" 130px "content content " 1fr /260px 1fr;
 }
+
 
 /* Nav */
 
-.nav{
+.nav {
     grid-area: nav;
     background: linear-gradient(135deg, #2d2486, #594dc4);
     display: grid;
@@ -39,12 +37,12 @@ body, html{
     color: white;
 }
 
-.nav ul{
+.nav ul {
     display: flex;
     list-style: none;
 }
 
-.nav ul li a{
+.nav ul li a {
     padding: 10px 20px;
     margin: 0 5px;
     border-radius: 5px;
@@ -57,27 +55,26 @@ body, html{
     transition: 0.3s;
 }
 
-.nav ul li a:hover{
+.nav ul li a:hover {
     background-color: rgba(0, 0, 0, 0.3);
     color: white;
-
 }
 
 
 /* Content */
 
-.content{
-    grid-area:content;
+.content {
+    grid-area: content;
 }
 
-.left{
-    height:100%;
+.left {
+    height: 100%;
     width: 30%;
     float: left;
     padding: 10px 30px;
 }
 
-.status{
+.status {
     width: 100%;
     height: 95%;
     border-radius: 5px;
@@ -86,18 +83,18 @@ body, html{
     padding: 20px 0;
 }
 
-.status ul{
+.status ul {
     list-style: none;
 }
 
-.status ul li{
+.status ul li {
     font-size: 20px;
-    border-bottom:2px solid #7972bb;
+    border-bottom: 2px solid #7972bb;
     margin: 0 30px;
     padding: 20px 0;
 }
 
-#reserva{
+#reserva {
     width: 40%;
     height: 35px;
     font-size: 16px;
@@ -110,75 +107,64 @@ body, html{
     background-color: white;
 }
 
-#reserva:hover{
+#reserva:hover {
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
 }
 
-
-.right{
+.right {
     float: right;
     width: 70%;
 }
 
-.grafico{
-    width: 500px;
-    height: 400px;
+.grafico {
+    width: 700px;
+    height: 300px;
+    border: 1px solid black;
     margin: 5% auto;
-    background-color: rgb(165, 165, 165);
-
 }
 
-@media screen and (max-width:1100px){
-    .left{
+@media screen and (max-width:1100px) {
+    .left {
         float: none;
         width: 100%;
         height: auto;
     }
-
-    .status{
+    .status {
         width: 50%;
         margin: 0 auto;
-
     }
-
-    .right{
+    .right {
         float: none;
         width: 100%;
         height: auto;
     }
-
 }
 
-@media screen and (max-width:420px){
-    .left{
+@media screen and (max-width:420px) {
+    .left {
         float: none;
         width: 100%;
         height: auto;
     }
-
-    .status{
+    .status {
         width: 100%;
         margin: 0 auto;
-
     }
-
-    .right{
+    .right {
         float: none;
         width: 100%;
         height: auto;
     }
-
-    .grafico{
+    .grafico {
         width: 98%;
     }
-
 }
 
 
 /* Modal */
 
-.pop-up{
+.pop-up {
     position: fixed;
     height: 100vh;
     width: 100vw;
@@ -188,14 +174,14 @@ body, html{
     align-items: center;
 }
 
-.pop-up.mostrar{
+.pop-up.mostrar {
     display: flex;
     z-index: 2000;
 }
 
-
-.salas{
+.salas {
     position: relative;
+    bottom: 100px;
     background-color: white;
     border: 1px solid black;
     width: 70%;
@@ -207,7 +193,6 @@ body, html{
     overflow-y: auto;
     padding-left: 50px;
 }
-
 
 
 /*
@@ -227,26 +212,28 @@ body, html{
 */
 
 .container {
-    list-style:none;
+    list-style: none;
     margin: 0;
     padding: 20px;
 }
 
-.item{
-    margin:30px 0px;
+.item {
+    margin: 30px 0px;
     padding: 10px 10px;
     border-radius: 5px;
     justify-content: space-between;
     background-color: #1a125f;
 }
 
-.item a{
+.item a {
     padding: 10px 15px;
     background-color: #1a125f;
     text-decoration: none;
     color: white;
 }
 
+
+/*
 #pesquisa{
     position: relative;
     top: 10px;
@@ -256,17 +243,14 @@ body, html{
     height: 40px;
     margin: 0 auto;
     padding: 6px;
-
-
 }
+*/
 
-@keyframes modal{
-    from{
+@keyframes modal {
+    from {
         transform: scale(.1);
     }
-    to{
+    to {
         transform: scale(1);
     }
 }
-
-

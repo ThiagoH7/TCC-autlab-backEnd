@@ -1,6 +1,11 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
 <head>
-    <link rel="stylesheet" href="/css/recuperar.css">
-    <title>Recuperação de senha</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="recuperar.css">
+    <title>recuperar</title>
 </head>
 
 <body>
@@ -8,14 +13,18 @@
         <div class="content first-content" action="/user/recuperar_senha" method="post">
             <div class="second-column">
                 <h2 class="title title-second">Recuperar Senha</h2>
-                <form class="form" method="POST" action="/user/recuperar_senha">
+                <form class="form">
                     <label class="label-input" for="">
                         Insira seu Email:
                     </label>
                     <input type="email" placeholder="Email" name="email">
+
+
                     <button type="submit" class="btn btn-second">Enviar</button>
                 </form>
             </div><!-- second column -->
         </div><!-- first content -->
     </div>
 </body>
+
+</html>

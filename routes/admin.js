@@ -44,7 +44,7 @@ router.get('/reqsala:Sala', loginReq, async(req, res) => {
 })
 
 router.get('/login', (req, res) => {
-    res.render("pages/login", { layout: false })
+    res.render("pages/login", { layout: 'login' })
 })
 router.post('/login', (req, res, next) => {
     next()
