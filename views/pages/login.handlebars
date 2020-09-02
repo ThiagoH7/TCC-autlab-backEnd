@@ -1,9 +1,8 @@
 {{#each erros}}
-    <div class="alert alert-danger">{{texto}}</div>
+    <div class="alert">{{texto}}</div>
 {{/each}}
 
 <head>
-    <link rel="stylesheet" href="/public/css/styleLogin.css">
     <title>Login</title>
 </head>
 
@@ -19,12 +18,12 @@
                     <h2 class="title title-second">Login</h2>
                     <form class="form" method="POST" action="/ad/login">
 
-                        <label class="label-input" for="">
+                        <label class="label-input" for="email">
                      
                             <input type="email" placeholder="Email" name="email">
                         </label>
 
-                        <label class="label-input" for="">
+                        <label class="label-input" for="pasword">
                            
                             <input id="senha3" type="password" placeholder="Senha" name="password">
                             <span class="span" onclick="mostrarSenha3()"><svg width="1em" height="1em" viewBox="0 0 16 16"
