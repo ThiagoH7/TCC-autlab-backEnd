@@ -20,16 +20,6 @@ const { loginReq } = require('./helpers/loginReq')
 //HandleBars-------//
 app.engine("handleBars", handlebars({ defaultLayout: 'main' }))
 app.set("view engine", "handleBars")
-    //Helper
-var hbs = handlebars.create({
-    helpers: {
-        isAdmin: (value) => {
-            if (req.isAuthenticated()) {
-                if (req.user.admin == true) { return value = true }
-            } else { return value = false }
-        }
-    }
-})
 
 //Public-------------//
 app.use(express.static(path.join(__dirname, '/public')))
