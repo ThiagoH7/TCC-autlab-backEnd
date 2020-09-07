@@ -1,6 +1,10 @@
-{{#each erros}}
-    <div class="alert">{{texto}}</div>
-{{/each}}
+{{#if erros}}
+    {{#each erros}}
+        <div class="">{{texto}}</div>
+    {{/each}}
+{{else}}
+    <div class="success">{{success}}</div>
+{{/if}}
 
 <head>
     <title>Login</title>
