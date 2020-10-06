@@ -6,12 +6,11 @@ const bp = require('body-parser')
 const mongoose = require('mongoose')
 const admin = require('./routes/admin')
 const usuario = require('./routes/usuario')
+const reserva = require('./routes/reserva')
 const path = require('path')
 const session = require('express-session')
 const flash = require('connect-flash')
 const cp = require('cookie-parser')
-const moment = require('moment')
-const chart = require('chart.js')
 const passport = require('passport')
 require('./config/auth')(passport)
 const { loginReq } = require('./helpers/loginReq')
@@ -79,6 +78,7 @@ app.get('/logout', loginReq, (req, res) => {
 //Rotas Externas-----------//
 app.use('/ad', admin)
 app.use('/user', usuario)
+app.use('/reserv', reserva)
 
 //Rodando-------------//
 const PORTA = 8089

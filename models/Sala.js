@@ -10,7 +10,8 @@ const Sala = new schema({
     hAbert: { type: Date, default: Date.now },
     hFech: { type: Date, default: Date.now },
     consAprox: { type: Number, Required: true },
-    contSem: { type: Number }
+    contSem: { type: Number },
+    disp: { type: Boolean, default: true }
 })
 
 mongoose.model("salas", Sala);
