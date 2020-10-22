@@ -1,7 +1,27 @@
 {{#if reservas}}
     {{#each reservas}}
         {{salasNumero}} | {{hMin}} | {{hMax}}
-        <h4 id="status">{{validacao}}</h4>
+        <h4 class = "statusSala"></h4>
+        {{iterator}}
         <hr>
+        <script>
+            var statDinam = document.querySelectorAll(".statusSala")
+
+            var hMin = []
+            hMin.push("{{hMin}}")
+            var horaMin = new Date (hMin[0])
+
+            var hMax = []
+            hMax.push("{{hMax}}")
+            var horaMax = new Date (hMax[0])
+
+            var time = new Date()
+
+            if (time.getTime() > horaMin.getTime() && time.getTime() < horaMax.getTime()) {
+                statDinam[{{@key}}].textContent = "Sala Ocupada"
+            } else {
+                statDinam[{{@key}}].textContent = "Sala Livre"
+            }
+        </script>
     {{/each}}
 {{/if}}

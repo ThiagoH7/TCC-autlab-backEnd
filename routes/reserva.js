@@ -14,22 +14,15 @@ router.get('/reserva-sala', async(req, res) => {
     hoje.setHours(hoje.getHours() - 3)
 
     try {
-        let reservas = await Reserva.find({}).limit(1).sort({ $natural: -1 })
+        var salasDistin = await Reserva.distinct('salasNumero')
+        var count = salasDistin.length
+        let reservas = []
+        for (i = 0; i < count; i++) {
+            let query = await Reserva.findOne({ salasNumero: salasDistin[i] }).sort({ $natural: -1 }).lean()
+            reservas.push(query)
+        }
         return res.render('pages/reserva', {
-            reservas: reservas.map(reservas => reservas.toJSON()),
-            helpers: {
-                validacao: (value) => {
-                    var str = (reservas)
-                    var horaMin = new Date(str[0].hMin)
-                    var horaMax = new Date(str[0].hMax)
-                    var time = new Date()
-                    if (time.getTime() > horaMin.getTime() && time.getTime() < horaMax.getTime()) {
-                        return value = "Sala Ocupada"
-                    } else {
-                        return value = "Sala Livre"
-                    }
-                }
-            }
+            reservas: reservas,
         })
     } catch (err) {
         req.flash("error_msg", "Houve um erro")
