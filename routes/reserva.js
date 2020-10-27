@@ -1,24 +1,21 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
-const exhbs = require('express-handlebars')
-const User = require('../models/User')
-require('../models/Sala')
-const Sala = mongoose.model('salas')
 require('../models/User')
-require('../models/Reserva')
-const Reserva = mongoose.model('reservas')
+const User = mongoose.model('users')
+require('../models/SalaReserva')
+const SalaReserva = mongoose.model('salasReserva')
 
-router.get('/reserva-sala', async(req, res) => {
+router.get('/reservas-atuais', async(req, res) => {
     var hoje = new Date()
     hoje.setHours(hoje.getHours() - 3)
 
     try {
-        var salasDistin = await Reserva.distinct('salasNumero')
+        var salasDistin = await SalaReserva.distinct('numero')
         var count = salasDistin.length
         let reservas = []
         for (i = 0; i < count; i++) {
-            let query = await Reserva.findOne({ salasNumero: salasDistin[i] }).sort({ $natural: -1 }).lean()
+            let query = await SalaReserva.findOne({ numero: salasDistin[i] }).sort({ $natural: -1 }).lean().populate('user_id')
             reservas.push(query)
         }
         return res.render('pages/reserva', {
@@ -29,8 +26,19 @@ router.get('/reserva-sala', async(req, res) => {
     }
 })
 
+//Criar rota get para fazer o filtro (selecionar a sala (e período?))
+router.get('/historico-reservas-sala:param', async(req, res) => {
+    var salaParam = req.params.param
+    try {
+        var sala = await SalaReserva.find({ numero: salaParam }).populate('user_id')
+        return res.send(sala)
+    } catch {
+        return res.sendStatus(500).send("erro interno do servidor")
+    }
+})
+
 router.post('/reserva-sala', async(req, res) => {
-    let { hMin, hMax, salNum } = req.body
+    let { hMin, hMax, numero } = req.body
 
     //Hora minima
     horaMin = hMin[0] + hMin[1], minutoMin = hMin[3] + hMin[4]
@@ -49,19 +57,25 @@ router.post('/reserva-sala', async(req, res) => {
     max.setHours(hMaxCon)
     max.setMinutes(mMaxCon)
 
-    const novaReserva = new Reserva({
+    let sub = Math.abs(max.getTime() - min.getTime())
+    let horas = Math.ceil(sub / (1000 * 60 * 60))
+
+    const novaReserva = new SalaReserva({
         user_id: req.user._id,
         hMin: min,
         hMax: max,
-        salasNumero: salNum
+        numero: numero,
+        consumoAprox: horas
     })
 
     try {
         await novaReserva.save()
-        res.sendStatus(200).send('Sucesso ao resgistrar reserva')
-    } catch (error) {}
+        res.sendStatus(200).send("Sucesso ao resgistrar reserva")
+    } catch (error) {
+        res.sendStatus(500).send("Houve um erro ao salvar a reserva, tente novamente, por favor")
+    }
 
-    new Reserva(novaReserva)
+    new SalaReserva(novaReserva)
 })
 
 module.exports = router

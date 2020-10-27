@@ -56,7 +56,7 @@ router.post('/novo', (req, res) => {
                 res.redirect('/user/novo')
             } else {
                 const newUser = new User({
-                    name: req.body.name,
+                    nome: req.body.name,
                     email: req.body.email,
                     password: req.body.password,
                     admin: req.body.admin
@@ -74,6 +74,7 @@ router.post('/novo', (req, res) => {
     }
 })
 
+//Recuperar senha
 router.get('/recuperar_senha', (req, res) => {
     res.render('pages/recupSenha', { layout: false })
 })
@@ -115,6 +116,7 @@ router.post('/recuperar_senha', async(req, res) => {
     }
 })
 
+//Mudar senha
 router.get('/nova_senha', (req, res) => {
     res.render('pages/mudarSenha', { layout: false })
 })

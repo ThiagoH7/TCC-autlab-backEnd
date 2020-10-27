@@ -2,11 +2,8 @@
 const ex = require('express')
 const router = ex.Router()
 const mongoose = require('mongoose')
-require('../models/Sala')
-const Sala = mongoose.model("salas")
-require('../models/User')
-const User = mongoose.model("users")
-const bcrypt = require('bcryptjs')
+require('../models/SalaReserva')
+const SalaReserva = mongoose.model("salasReserva")
 const passport = require('passport')
 const { adControl } = require('../helpers/adControl')
 const { loginReq } = require('../helpers/loginReq')
@@ -21,10 +18,10 @@ router.get('/cadast', adControl, (req, res) => {
 router.post('/regsala/cons', (req, res) => {
     const salaReg = {
         numero: req.body.numero,
-        consAprox: req.body.consAprox,
+        consumoAprox: req.body.consumoAprox,
         contSem: req.body.contSem
     }
-    new Sala(salaReg).save().then(() => {
+    new SalaReserva(salaReg).save().then(() => {
         req.flash('success_msg', "Usuário criado com sucesso")
     }).catch((err) => {
         req.flash('error_msg', "Erro ao cadastrar usuários")
@@ -36,7 +33,7 @@ router.post('/regsala/cons', (req, res) => {
 router.get('/reqsala:Sala', loginReq, async(req, res) => {
     var paramSala = req.params.Sala
     try {
-        var salas = await Sala.find({ numero: paramSala }).limit(15)
+        var salas = await SalaReserva.find({ numero: paramSala }).limit(15)
         return res.render('pages/info', { salas: salas.map(salas => salas.toJSON()) })
     } catch (err) {
         req.flash("error_msg", "Houve um erro")

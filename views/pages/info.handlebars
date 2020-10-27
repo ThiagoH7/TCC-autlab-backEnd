@@ -6,7 +6,7 @@
                 <li>Responsavel: </li>
                 <li>Situação: </li>
             </ul>
-            <a href="/reserv/reserva-sala"><input type="button" id="reserva" value="Reservar"></a>
+            <a href="/reserv/reservas-atuais"><input type="button" id="reserva" value="Reservar"></a>
         </div>
        </section>
         <section class="right">
@@ -23,8 +23,8 @@
         </script>   
         {{#each salas}}
             <script>
-                    dados.push({{consAprox}})
-                    diaSem.push({{contSem}})
+                    dados.push({{consumoAprox}})
+                    diaSem.push()
             </script>
         {{/each}}
     {{else}}
