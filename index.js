@@ -17,7 +17,13 @@ const { loginReq } = require('./helpers/loginReq')
 
 /*------------------- */
 //HandleBars-------//
-app.engine("handleBars", handlebars({ defaultLayout: 'main' }))
+app.engine("handleBars", handlebars({
+    defaultLayout: 'main',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    }
+}))
 app.set("view engine", "handleBars")
 
 //Public-------------//

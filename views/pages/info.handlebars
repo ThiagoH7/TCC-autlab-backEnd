@@ -2,11 +2,12 @@
     <section class="left">
         <div class="status">
             <ul>
-                <li>Nome: </li>
-                <li>Responsavel: </li>
-                <li>Situação: </li>
+                <li>Nome: {{#each inf}} {{this.numero}} {{/each}} </li>
+                <li>Responsavel: {{#each inf}}  {{this.user_id.nome}} {{/each}} </li>
+                {{!-- situação será definido priemrio, caso esteja livre, não exibirá nada além do aviso --}}
+                <li>Situação: {{status}} </li>
             </ul>
-            <a href="/reserv/reservas-atuais"><input type="button" id="reserva" value="Reservar"></a>
+            <a href="/reserv/reservas{{#each inf}} {{numero}} {{/each}}"><input type="button" id="reserva" value="Reservar"></a>
         </div>
        </section>
         <section class="right">
@@ -24,7 +25,8 @@
         {{#each salas}}
             <script>
                     dados.push({{consumoAprox}})
-                    diaSem.push()
+                    //console.log(dados[{{@index}}])
+                    //diaSem.push()
             </script>
         {{/each}}
     {{else}}
