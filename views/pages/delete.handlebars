@@ -1,0 +1,9 @@
+<form action="/reserv/apagar-reservas" method="post">
+{{#each query}}
+    {{numero}} | {{user_id.nome}} | {{hMax}}  
+    <input type="checkbox" name="id" value="{{_id}}">
+    <label for="id"> Deletar?</label>
+    <hr>
+{{/each}}
+    <button type="submit"> Deletar </button>
+</form>

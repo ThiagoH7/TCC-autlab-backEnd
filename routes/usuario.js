@@ -120,6 +120,7 @@ router.post('/recuperar_senha', async(req, res) => {
 router.get('/nova_senha', (req, res) => {
     res.render('pages/mudarSenha', { layout: false })
 })
+
 router.post('/nova_senha', async(req, res) => {
     const { email, token, password, confirmPassword } = req.body
 

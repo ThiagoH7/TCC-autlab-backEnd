@@ -5,7 +5,7 @@
                 <li>Nome: {{#each inf}} {{this.numero}} {{/each}} </li>
                 <li>Responsavel: {{#each inf}}  {{this.user_id.nome}} {{/each}} </li>
                 {{!-- situação será definido priemrio, caso esteja livre, não exibirá nada além do aviso --}}
-                <li>Situação: {{status}} </li>
+                <li>Situação: {{queryValid}} </li>
             </ul>
             <a href="/reserv/reservas{{#each inf}} {{numero}} {{/each}}"><input type="button" id="reserva" value="Reservar"></a>
         </div>

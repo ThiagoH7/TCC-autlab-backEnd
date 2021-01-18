@@ -45,18 +45,22 @@ router.get('/reqsala:Sala', loginReq, async(req, res) => {
 
         var inf = await SalaReserva.findOne({ numero: paramSala }).sort({ $natural: -1 }).populate('user_id')
 
-        var statusQuery = await SalaReserva.findOne({ numero: paramSala, hMin: { $lte: new Date(escopoMin) }, hMax: { $gte: new Date(escopoMax) } }).sort({ $natural: -1 }).lean().populate()
-        console.log(statusQuery.hMin)
+        //var statusQuery = await SalaReserva.findOne({ numero: paramSala, hMin: { $lte: new Date(escopoMin) }, hMax: { $gte: new Date(escopoMax) } }).sort({ $natural: -1 }).lean().populate()
         return res.render('pages/info', {
             salas: salas.map(salas => salas.toJSON()),
             inf: inf,
-            helpers: {
-                status: function(stat) {
-                    var now = new Date()
-                    if (statusQuery.hMin >= now && statusQuery.hMax <= now)
-                        return stat = "Ocupada"
-                    else
-                        return stat = "Livre"
+            helper: {
+                queryValid: function(valid) {
+                    for (let i = 0; i < arr.length; i++) {
+                        if (Math.trunc(arr[i]) == now.getHours()) {
+                            escopoMin.setHours(Math.trunc(arr[i]) - 4)
+                        }
+                    }
+                    if (SalaReserva.find({ numero: param, hMin: { $gte: escopoMin }, })) {
+                        return valid = "Sala reservada"
+                    } else {
+                        return valid = "Sala reservada"
+                    }
                 }
             }
         })
@@ -66,6 +70,7 @@ router.get('/reqsala:Sala', loginReq, async(req, res) => {
     }
 })
 
+//login
 router.get('/login', (req, res) => {
     res.render("pages/login", { layout: 'login' })
 })
