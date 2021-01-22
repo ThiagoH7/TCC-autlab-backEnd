@@ -1,4 +1,5 @@
 const express = require('express')
+const { parse } = require('handlebars')
 const router = express.Router()
 const mongoose = require('mongoose')
 require('../models/User')
@@ -63,26 +64,31 @@ router.post('/reserva-sala', async(req, res) => {
     let { hMin, hMax, numero, consumo } = req.body
 
     //Hora minima
-    horaMin = hMin[0] + hMin[1], minutoMin = hMin[3] + hMin[4]
-    hMinCon = parseInt(horaMin, 10), mMinCon = parseInt(minutoMin, 10)
+    horaMin = hMin[0] + hMin[1], minutoMin = hMin[2] + hMin[3], segunMin = hMin[4] + hMin[5], milisMin = hMin[4] + hMin[4]
+    hMinCon = parseInt(horaMin, 10), mMinCon = parseInt(minutoMin, 10), sMinCon = parseInt(segunMin, 10), miMinCon = parseInt(milisMin, 10)
 
     let min = new Date()
     min.setHours(hMinCon)
     min.setMinutes(mMinCon)
+    min.setSeconds(sMinCon)
+    min.setMilliseconds(miMinCon)
     min = min.valueOf()
 
 
     //Hora máxima
-    horaMax = hMax[0] + hMax[1], minutoMax = hMax[3] + hMax[4]
-    hMaxCon = parseInt(horaMax, 10), mMaxCon = parseInt(minutoMax, 10)
+    horaMax = hMax[0] + hMax[1], minutoMax = hMax[2] + hMax[3], segunMax = hMax[4] + hMax[4], milisMax = hMax[4] + hMax[4]
+    hMaxCon = parseInt(horaMax, 10), mMaxCon = parseInt(minutoMax, 10), sMaxCon = parseInt(segunMax, 10), miMaxCon = parseInt(milisMax, 10)
 
     let max = new Date()
     max.setHours(hMaxCon)
     max.setMinutes(mMaxCon)
+    max.setSeconds(sMaxCon)
+    max.setMilliseconds(miMaxCon)
     max = max.valueOf()
 
-    if (SalaReserva.find({ numero: numero, hMin: { $eq: min } }) && SalaReserva.find({ numero: numero, hMax: { $eq: max } }))
+    if (await SalaReserva.find({ numero: numero, hMin: { $eq: min } }).countDocuments() != 0 && await SalaReserva.find({ numero: numero, hMax: { $eq: max } }).countDocuments() != 0)
         return res.status(500).send("Sala já reservada, verifique disponibilidade")
+
 
     const novaReserva = new SalaReserva({
         user_id: req.user._id,
