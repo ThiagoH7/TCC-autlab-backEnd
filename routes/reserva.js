@@ -108,18 +108,26 @@ router.get('/apagar-reservas', async(req, res) => {
     res.render('pages/delete', { query: query })
 })
 router.post('/apagar-reservas', async(req, res) => {
-    const user = req.user._id
-    const numero = req.body.numero
+    const resId = req.body.id
 
-    console.log(user, numero)
-    try {
-        await SalaReserva.findOneAndRemove({ user_id: user })
-        res.status(200).send("Reserva deletada")
-    } catch (err) {
-        console.log(err)
-        res.status(500).send("Ocorreu um erro ao deletar a reserva")
+    if (typeof resId == 'object') {
+        for (let i = 0; i < resId.length; i++) {
+            await SalaReserva.findOneAndRemove({ _id: resId[i] })
+            if (i == resId.length - 1)
+                res.status(200).send("Reservas deletadas")
+        }
+    } else if (typeof resId === 'string') {
+        try {
+            await SalaReserva.findOneAndRemove({ _id: resId })
+            res.status(200).send("Reserva deletada")
+        } catch (err) {
+            res.status(500).send("Ocorreu um erro ao deletar a reserva")
+        }
+    } else {
+        return res.status(500).send("Ocorreu um erro interno")
     }
 })
+
 
 //Atualizar Reservas
 
