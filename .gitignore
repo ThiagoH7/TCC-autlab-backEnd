@@ -1,3 +1,6 @@
 node_modules
 .vscode
 detectmobilebrowser.js.txt
+separador.js
+salaNome.js
+package-loc.json
