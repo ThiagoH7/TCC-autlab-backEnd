@@ -8,12 +8,17 @@ const User = mongoose.model('users')
 
 module.exports = function(passport) {
     passport.use(new localStrategy({ usernameField: 'email', passwordField: 'password' }, (email, password, done) => {
-        User.findOne({ email: email }).then(user => {
+        User.findOne({ email: email }).select("password").then(user => {
             if (!user) {
                 return done(null, false, { message: "Essa conta não existe" })
             } else {
-                bcrypt.compare(password, user.password, (erro, batem) => {
+                console.log(user.password)
+                bcrypt.compare(password, user.password, (err, batem) => {
+                    console.log(user.password, "||")
+                    if (err)
+                        return err
                     if (batem) {
+                        console.log("funcionou")
                         return (null, user)
                     } else {
                         return (null, false, { message: " Senha incorreta" })

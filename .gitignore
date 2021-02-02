@@ -3,4 +3,4 @@ node_modules
 detectmobilebrowser.js.txt
 separador.js
 salaNome.js
-package-loc.json
+package-lock.json

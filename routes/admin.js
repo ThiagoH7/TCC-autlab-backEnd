@@ -9,26 +9,6 @@ const { adControl } = require('../helpers/adControl')
 const { loginReq } = require('../helpers/loginReq')
 
 //rotas----------------------//
-//Página de adastro de consumo
-router.get('/cadast', adControl, (req, res) => {
-    res.render('pages/registro')
-})
-
-//Registar novo consumo
-router.post('/regsala/cons', (req, res) => {
-    const salaReg = {
-        numero: req.body.numero,
-        consumoAprox: req.body.consumoAprox,
-        contSem: req.body.contSem
-    }
-    new SalaReserva(salaReg).save().then(() => {
-        req.flash('success_msg', "Usuário criado com sucesso")
-    }).catch((err) => {
-        req.flash('error_msg', "Erro ao cadastrar usuários")
-    })
-    res.redirect('/')
-})
-
 //Buscar sala e filtrando pelo número da sala
 router.get('/reqsala:Sala', loginReq, async(req, res) => {
     var paramSala = req.params.Sala
@@ -46,7 +26,7 @@ router.get('/reqsala:Sala', loginReq, async(req, res) => {
         var inf = await SalaReserva.findOne({ numero: paramSala }).sort({ $natural: -1 }).populate('user_id')
 
         //var statusQuery = await SalaReserva.findOne({ numero: paramSala, hMin: { $lte: new Date(escopoMin) }, hMax: { $gte: new Date(escopoMax) } }).sort({ $natural: -1 }).lean().populate()
-        return res.render('pages/info', {
+        return res.render('pages/geral/info', {
             salas: salas.map(salas => salas.toJSON()),
             inf: inf,
             helper: {
@@ -59,7 +39,7 @@ router.get('/reqsala:Sala', loginReq, async(req, res) => {
                     if (SalaReserva.find({ numero: param, hMin: { $gte: escopoMin }, })) {
                         return valid = "Sala reservada"
                     } else {
-                        return valid = "Sala reservada"
+                        return valid = "Sala lirve"
                     }
                 }
             }
@@ -72,7 +52,7 @@ router.get('/reqsala:Sala', loginReq, async(req, res) => {
 
 //login
 router.get('/login', (req, res) => {
-    res.render("pages/login", { layout: 'login' })
+    res.render("pages/geral/login", { layout: 'login' })
 })
 
 router.post('/login', (req, res, next) => {

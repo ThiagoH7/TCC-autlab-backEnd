@@ -7,7 +7,7 @@
                 {{!-- situação será definida primeiro, caso esteja livre, não exibirá nada além do aviso --}}
                 <li>Situação: {{queryValid}} </li>
             </ul>
-            <a href="/reserv/reservas{{#each inf}} {{numero}} {{/each}}"><input type="button" id="reserva" value="Reservar"></a>
+            <a id="inpt"><input type="button" id="reserva" value="Reservar"></a>
         </div>
        </section>
         <section class="right">
@@ -57,3 +57,8 @@
     </div>
 </section>
 </div>
+<script>
+        var win = window.location.href.slice(length-2)
+        var ref = document.querySelector("#inpt")
+        ref.setAttribute("href", "/reserv/reservas" + win)
+</script>

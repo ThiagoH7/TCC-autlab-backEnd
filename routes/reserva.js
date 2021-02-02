@@ -20,7 +20,7 @@ router.get('/reservas-atuais', async(req, res) => {
             let query = await SalaReserva.findOne({ numero: salasDistin[i] }).sort({ $natural: -1 }).lean().populate('user_id')
             reservas.push(query)
         }
-        return res.render('pages/reserva', {
+        return res.render('pages/Reserva/reserva', {
             reservas: reservas,
         })
     } catch (err) {
@@ -30,7 +30,7 @@ router.get('/reservas-atuais', async(req, res) => {
 
 //Verifica se a sala está ocupada no momento em que se faz a busca
 router.get('/reservas:sala', async(req, res) => {
-    var arr = [7, 7.45, 8.3, 8.5, 9.35, 10.2, 10.3, 11.15, 12, 13, 13.45, 14.3, 14.4, 15.25, 16.1, 16.3, 17.15, 18]
+    var arr = [7, 7.45, 8.3, 8.5, 9.35, 10.2, 10.3, 11.15, 12, 13, 13.45, 14.3, 14.4, 15.25, 16.1, 16.3, 17.15, 18, 19, 19.45, 20.3, 20.5, 21.35, 22]
     var escopoMin = new Date()
     var now = new Date()
 
@@ -42,7 +42,13 @@ router.get('/reservas:sala', async(req, res) => {
             }
         }
         const query = await SalaReserva.find({ numero: param, hMin: { $gte: escopoMin }, }).lean().populate()
-        res.send(query)
+            //Redirecionar para a página de reservas com o número já preenchido
+        if (query.length != 0) {
+            res.send(query)
+        } else {
+            res.send("sla")
+        }
+
     } catch (err) {
         res.send(err)
     }
@@ -111,7 +117,7 @@ router.post('/reserva-sala', async(req, res) => {
 //Apagar reservas (get e post)
 router.get('/apagar-reservas', async(req, res) => {
     const query = await SalaReserva.find({}).limit(10)
-    res.render('pages/delete', { query: query })
+    res.render('pages/Reserva/delete', { query: query })
 })
 router.post('/apagar-reservas', async(req, res) => {
     const resId = req.body.id

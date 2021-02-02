@@ -73,7 +73,7 @@ app.use((req, res, next) => {
 
 //Rotas----------------// 
 app.get('/', loginReq, (req, res) => {
-    res.render('pages/home')
+    res.render('pages/geral/home')
 })
 
 app.get('/logout', loginReq, (req, res) => {
