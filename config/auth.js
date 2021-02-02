@@ -12,13 +12,10 @@ module.exports = function(passport) {
             if (!user) {
                 return done(null, false, { message: "Essa conta não existe" })
             } else {
-                console.log(user.password)
                 bcrypt.compare(password, user.password, (err, batem) => {
-                    console.log(user.password, "||")
                     if (err)
                         return err
                     if (batem) {
-                        console.log("funcionou")
                         return (null, user)
                     } else {
                         return (null, false, { message: " Senha incorreta" })
