@@ -68,14 +68,15 @@ html {
 }
 
 .status {
-    width: 90%;
-    margin-top: 100px;
-    height: 70%;
+    width: 100%;
+    margin-top: 30px;
+    height: 90%;
     border-radius: 10px;
     background-color: #4938ca;
-    font-weight: 600;
+    font-size: 10px;
+    font-weight: 400;
     color: rgb(233, 233, 233);
-    padding: 20px 0;
+    padding: 5px 0;
 }
 
 .status ul {
@@ -124,7 +125,7 @@ html {
     height: 350px;
     border-radius: 5px;
     border: 2px solid #4938ca;
-    margin: 200px auto;
+    margin: 130px auto;
 }
 
 .grafico p{
