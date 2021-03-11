@@ -14,13 +14,16 @@
         
         <section class="left">
             <div class="status">
-                <ul>
+                <form action="/reserv/reserva-sala">
+                    <ul>
                     <li>Identificação: </li>
                     <li>Responsavel: </li>
                     <li>Situação: </li>
-                    <li>Horário:  <input class="time" type="time"></li>
+                    <li>Horário:  <input class="time" name="data" type="time"></li>
+                    <li>Data:  <input class="time" name="data" type="date"></li>
                 </ul>
                 <a href="/reserv/reservas-atuais"><input type="button" id="reserva" value="Reservar"></a>
+                </form>
             </div>
         </section>
         <section class="right">

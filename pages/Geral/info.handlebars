@@ -1,14 +1,17 @@
 <div class="content">
     <section class="left">
         <div class="status">
-            <ul>
+            <form method="POST" action="/reserv/reserva-sala">
+                <ul>
                 <li>Identificação: {{#each inf}} {{this.numero}} {{/each}} </li>
                 <li>Responsavel: {{#each inf}}  {{this.user_id.nome}} {{/each}} </li>
                 {{!-- situação será definida primeiro, caso esteja livre, não exibirá nada além do aviso --}}
                 <li>Situação: {{queryValid}} </li>
                 <li>Horário:  <input class="time" type="time"></li>
-            </ul>
-            <a id="inpt"><input type="button" id="reserva" value="Reservar"></a>
+                <li>Data:  <input class="time" name="data" type="date"></li>
+                </ul>
+            <input type="button" id="reserva" value="Reservar">
+            </form>
         </div>
        </section>
         <section class="right">
