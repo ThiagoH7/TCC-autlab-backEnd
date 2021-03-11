@@ -1,0 +1,64 @@
+<div class="content">
+    <section class="left">
+        <div class="status">
+            <ul>
+                <li>Identificação: {{#each inf}} {{this.numero}} {{/each}} </li>
+                <li>Responsavel: {{#each inf}}  {{this.user_id.nome}} {{/each}} </li>
+                {{!-- situação será definida primeiro, caso esteja livre, não exibirá nada além do aviso --}}
+                <li>Situação: {{queryValid}} </li>
+                <li>Horário:  <input class="time" type="time"></li>
+            </ul>
+            <a id="inpt"><input type="button" id="reserva" value="Reservar"></a>
+        </div>
+       </section>
+        <section class="right">
+        <div class="grafico">
+                <div>
+                    {{!-- Recebendo os dados do Mongodb --}}
+    {{#if salas}}
+    <div id="chart-conteiner" class="cardChart">
+    <canvas id="myChart" class="card-body"></canvas>
+    </div>
+        <script>
+            dados = []
+            diaSem = []
+        </script>   
+        {{#each salas}}
+            <script>
+                    dados.push({{consumoAprox}})
+                    //console.log(dados[{{@index}}])
+                    //diaSem.push()
+            </script>
+        {{/each}}
+    {{else}}
+    <p>Esta sala ainda não possui suporte</p>
+    {{/if}}
+    {{!-- ChartJS --}}
+    <script id="Chart">
+        var ctx = document.getElementById('myChart').getContext('2d')
+        var myChart= new Chart(ctx,{
+            type: 'line',
+            data: {
+                labels: diaSem,
+                datasets:[{
+                    label:'Consumo semanal',
+                    data: dados,
+                    borderColor: ['rgba(13, 12, 53, .8)'],
+                    borderWidth: 2,
+                    backgroundColor: ['rgba(255, 255, 255, 0)']
+                }]
+            },
+            options:{
+                responsive: true
+            }
+        })
+    </script>
+    </div>
+    </div>
+</section>
+</div>
+<script>
+        var win = window.location.href.slice(length-2)
+        var ref = document.querySelector("#inpt")
+        ref.setAttribute("href", "/reserv/reservas" + win)
+</script>
