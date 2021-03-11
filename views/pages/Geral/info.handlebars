@@ -1,13 +1,39 @@
 <div class="content">
     <section class="left">
         <div class="status">
-            <ul>
-                <li>Nome: {{#each inf}} {{this.numero}} {{/each}} </li>
+            <form method="POST" action="/reserv/reserva-sala">
+                <ul>
+                <li>Identificação: {{#each inf}} {{this.numero}} {{/each}} </li>
                 <li>Responsavel: {{#each inf}}  {{this.user_id.nome}} {{/each}} </li>
                 {{!-- situação será definida primeiro, caso esteja livre, não exibirá nada além do aviso --}}
                 <li>Situação: {{queryValid}} </li>
-            </ul>
-            <a id="inpt"><input type="button" id="reserva" value="Reservar"></a>
+                <li>Horário:  <select class="time" name="intervalo">
+                                <option value="07:00">07:00</option>
+                                <option value="07:15">07:45</option>
+                                <option value="07:30">08:30</option>
+                                <option value="07:45">09:00</option>
+                                <option value="08:00">09:45</option>
+                                <option value="08:15">10:30</option>
+                                <option value="08:30">11:15</option>
+                                <option value="08:45">12:00</option>
+                                <option value="09:00">13:00</option>
+                                <option value="09:15">13:45</option>
+                                <option value="09:30">14:30</option>
+                                <option value="09:45">15:00</option>
+                                <option value="10:00">15:45</option>
+                                <option value="10:15">16:30</option>
+                                <option value="10:30">17:15</option>
+                                <option value="10:45">18:00</option>
+                                <option value="11:00">19:00</option>
+                                <option value="11:15">19:45</option>
+                                <option value="11:30">20:30</option>
+                                <option value="11:45">21:15</option>
+                                <option value="12:00">22:00</option>
+                            </select></li>
+                <li>Data:  <input class="time" name="data" type="date"></li>
+                </ul>
+            <input type="button" id="reserva" value="Reservar">
+            </form>
         </div>
        </section>
         <section class="right">
@@ -30,8 +56,7 @@
             </script>
         {{/each}}
     {{else}}
-    <h3>Sem suporte para esta sala, ainda</h3>
-    <img src="https://1.bp.blogspot.com/-qn_SA1TYEGI/WvH2jOnE0gI/AAAAAAAA_G4/pnqm2UsG3ekadRnVE6mRkxatmmun08-ZQCLcBGAs/s1600/4c7a1d3932a211fa.png" alt="">
+    <p>Esta sala ainda não possui suporte</p>
     {{/if}}
     {{!-- ChartJS --}}
     <script id="Chart">
