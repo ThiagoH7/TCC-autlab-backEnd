@@ -35,18 +35,34 @@ body, html{
     left: 0;
 }
 .title {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     text-transform: capitalize;
 }
-.title-primary {
+.firts-content .title-primary {
     color: #fff;
+    position: relative;
+    top: -115px;
 }
-.title-second {
+.second-content .title-primary{
+    color: #fff;
+    position: relative;
+    top: -170px;
+}
+
+.firts-content .title-primary {
+    color: #fff;
+    position: relative;
+    top: -115px;
+}
+
+.second-column .title-second {
     color:  #6257c7;
+    position: relative;
+    top: -50px;
 }
 .description {
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 300;
     line-height: 30px;
 }
@@ -59,20 +75,25 @@ body, html{
 .btn {
     border-radius: 15px;
     color: #fff;
-    font-size: 12px;
+    font-size: 18px;
     padding: 10px 50px;
     cursor: pointer;
     font-weight: bold;
-    width: 170px;
+    width: 200px;
     align-self: center;
     border: none;
     outline: none;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 .btn-primary {
     background-color: transparent;
-    border: 1px solid #fff;
+    border: 3px solid #fff;
     transition: background-color .5s;
+    position: relative;
+    top: 70px;
+}
+.second-content .btn-primary{
+    top: 120px;
 }
 .btn-primary:hover {
     background-color: #fff;
@@ -109,20 +130,21 @@ body, html{
 .form {
     display: flex;
     flex-direction: column;
-    width: 55%;
+    width: 70%;
 }
 .form input {
-    height: 45px;
+    height: 55px;
     outline: none;
     width: 100%;
+    font-size: 20px;
     border: none;
     background-color: #ecf0f1;
-    padding: 0 10px;
+    padding: 0 16px;
 }
 .link{
     display: none;
     color: #34495e;
-    font-size: 14px;
+    font-size: 20px;
     margin: 10px auto;
     text-align: center;
     text-decoration: none;
