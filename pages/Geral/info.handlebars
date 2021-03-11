@@ -7,7 +7,29 @@
                 <li>Responsavel: {{#each inf}}  {{this.user_id.nome}} {{/each}} </li>
                 {{!-- situação será definida primeiro, caso esteja livre, não exibirá nada além do aviso --}}
                 <li>Situação: {{queryValid}} </li>
-                <li>Horário:  <input class="time" type="time"></li>
+                <li>Horário:  <select class="time" name="intervalo">
+                                <option value="07:00">07:00</option>
+                                <option value="07:15">07:45</option>
+                                <option value="07:30">08:30</option>
+                                <option value="07:45">09:00</option>
+                                <option value="08:00">09:45</option>
+                                <option value="08:15">10:30</option>
+                                <option value="08:30">11:15</option>
+                                <option value="08:45">12:00</option>
+                                <option value="09:00">13:00</option>
+                                <option value="09:15">13:45</option>
+                                <option value="09:30">14:30</option>
+                                <option value="09:45">15:00</option>
+                                <option value="10:00">15:45</option>
+                                <option value="10:15">16:30</option>
+                                <option value="10:30">17:15</option>
+                                <option value="10:45">18:00</option>
+                                <option value="11:00">19:00</option>
+                                <option value="11:15">19:45</option>
+                                <option value="11:30">20:30</option>
+                                <option value="11:45">21:15</option>
+                                <option value="12:00">22:00</option>
+                            </select></li>
                 <li>Data:  <input class="time" name="data" type="date"></li>
                 </ul>
             <input type="button" id="reserva" value="Reservar">
