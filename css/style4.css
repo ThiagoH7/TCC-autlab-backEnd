@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+.clear {
+    clear: both;
+}
+
+/* Nav */
+
+.nav {
+    background: #4938ca;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10%;
+    padding: 0px 40px;
+    color: white;
+}
+
+.nav ul {
+    display: flex;
+    margin-top: 15px;
+    list-style: none;
+}
+
+.nav h2{
+    margin-top: 10px;
+}
+
+.nav ul li a {  
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: .4s;
+    font-weight: 500;
+}
+
+.nav ul li a:hover {
+    background-color: #0e0077;
+    color: white;
+}
+
+
+/* Content */
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    height: 90%;
+    background: seashell;
+}
+
+.left {
+    width: 30%;
+    padding: 10px 30px;
+}
+
+.status {
+    width: 90%;
+    margin-top: 100px;
+    height: 70%;
+    border-radius: 10px;
+    background-color: #4938ca;
+    font-weight: 600;
+    color: rgb(233, 233, 233);
+    padding: 20px 0;
+}
+
+.status ul {
+    list-style: none;
+}
+
+.status ul li {
+    font-size: 20px;
+    border-bottom: 2px solid #c1c0ce;
+    margin: 0 30px;
+    padding: 20px 0;
+}
+
+.status ul li .time{
+    background-color:#4938ca;
+    color: rgb(233, 233, 233);
+    border: none ;
+}
+
+#reserva {
+    width: 60%;
+    height: 45px;
+    font-size: 23px;
+    border-radius: 5px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin: 15% 20%;
+    transition: 0.4s;
+    background-color: white;
+}
+
+#reserva:hover {
+    background-color: #0e0077;
+    color: white;
+}
+
+.right {
+    width: 70%;
+    text-align: center;
+}
+
+.grafico {
+    width: 700px;
+    height: 350px;
+    border-radius: 5px;
+    border: 2px solid #4938ca;
+    margin: 200px auto;
+}
+
+.grafico p{
+    margin-top: 155px;
+    font-size: 18px;
+}
+
+@media screen and (max-width:1100px) {
+    .left {
+        float: none;
+        width: 100%;
+        height: auto;
+    }
+    .status {
+        width: 50%;
+        margin: 0 auto;
+    }
+    .right {
+        float: none;
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .left {
+        float: none;
+        width: 100%;
+        height: auto;
+    }
+    .status {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .right {
+        float: none;
+        width: 100%;
+        height: auto;
+    }
+    .grafico {
+        width: 98%;
+    }
+}
+
+
+/* Modal */
+
+.pop-up {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.pop-up.mostrar {
+    display: flex;
+    z-index: 2000;
+}
+
+.salas {
+    position: relative;
+    bottom: 100px;
+    background-color: white;
+    border: 1px solid black;
+    width: 70%;
+    height: 70%;
+    border-radius: 10px;
+    animation: modal .5s;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    padding-left: 50px;
+}
+
+
+/*
+#fechar{
+    background-color: rgb(15, 52, 163);
+    width: 40px;
+    height: 40px;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: -20px;
+    right: -15px;
+    outline: none;
+    border: 1px solid black;
+    cursor: pointer;
+}
+*/
+
+.container {
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+}
+
+.item {
+    margin: 30px 0px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    justify-content: space-between;
+    background-color: #1a125f;
+}
+
+.item a {
+    padding: 10px 15px;
+    background-color: #1a125f;
+    text-decoration: none;
+    color: white;
+}
+
+
+/*
+#pesquisa{
+    position: relative;
+    top: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 90%;
+    height: 40px;
+    margin: 0 auto;
+    padding: 6px;
+}
+*/
+
+@keyframes modal {
+    from {
+        transform: scale(.1);
+    }
+    to {
+        transform: scale(1);
+    }
+}
